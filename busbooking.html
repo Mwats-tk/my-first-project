@@ -2,19 +2,19 @@
 <html lang="en">  
 <head>
   <style>
-    header{
-      background: color #00b4d8;
+    header {
+      background-color: #00b4d8; /* corrected */
     }
-    .form-group{
+    .form-group {
       width: 450px;
-      margin: 50px;
+      margin: 20px;
       padding: 25px;
       background-color: rgb(171, 242, 171);
       border: 2px solid #333;
       border-radius: 10px;
     }
 
-    input{
+    input {
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
@@ -22,38 +22,66 @@
       border-radius: 5px;
       background-color: #d2f5b4;
     }
-    button{
+    button {
       border-radius: 10px;
       align-items: center;
     }
-    table{
+    table {
       background-color: rgb(171, 242, 171);
+      width: 100%;
     }
-     body {
-          background-color : darkgoldenrod ;
-     }
-     h1 {
-        text-align: center;
-        font-size: x-large;
-        font-weight: bold;
-     }
-     h2 {
+    table, th, td {
+      border: 1px solid #333;
+      padding: 8px; /* corrected */
+    }
+    body {
+      background-color: darkgoldenrod;
+      display: flex;
+      flex-direction: column; /* header/nav stacked */
+    }
+    h1 {
       text-align: center;
-     }
-     p{
+      font-size: x-large;
+      font-weight: bold;
+    }
+    h2 {
+      text-align: center;
+    }
+    p {
       text-align: center;
       font-style: italic;
       font-size: 15px;
       text-decoration-color: darkblue;
       font-weight: bolder;
-     }
+    }
+     
+    .content {
+      display: flex; /* table + sidebar side by side */
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    #schedule {
+      flex: 1; /* table expands */
+    }
+
+    article {
+      width: 250px;             /* sidebar width */
+      background: #f0f0f0;
+      padding: 15px;
+      border-left: 2px solid #aaa;
+      height: 100vh;            /* full viewport height */
+      position: sticky;         /* stays visible when scrolling */
+      top: 0;
+      margin-left: 20px;        /* spacing from table */
+    }
   </style>
   <title>WD PROJECT TK</title>
 </head>
 <body>
 
 <header>
-  <h1>TK AND TINASHE TRAVELS</h1>
+  <h1>TikNash Logistics</h1>
   <p>Book your bus tickets quickly and easily</p>
 </header>
 
@@ -75,63 +103,86 @@
 
 <hr>
 
-<!-- Bus Schedule Table -->
- <div class="form-group">
-<section id="schedule">
-  <h2>Available Buses</h2>
-  <table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-      <tr>
-        <th>Bus No.</th>
-        <th>Source</th>
-        <th>Destination</th>
-        <th>Departure</th>
-        <th>Price</th>
-        <th>Route / Map</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>B101</td>
-        <td>Harare</td>
-        <td>Bulawayo</td>
-        <td>06:00 AM</td>
-        <td>$15</td>
-        <td><a href="https://www.google.com/maps/dir/Harare/Bulawayo" target="_blank">View Route</a></td>
-      </tr>
-      <tr>
-        <td>B102</td>
-        <td>Harare</td>
-        <td>Mutare</td>
-        <td>08:30 AM</td>
-        <td>$10</td>
-        <td><a href="https://www.google.com/maps/dir/Harare/Mutare" target="_blank">View Route</a></td>
-      </tr>
-      <tr>
-        <td>B103</td>
-        <td>Bulawayo</td>
-        <td>Victoria Falls</td>
-        <td>10:00 AM</td>
-        <td>$20</td>
-        <td><a href="https://www.google.com/maps/dir/Bulawayo/Victoria+Falls" target="_blank">View Route</a></td>
-      </tr>
-      <tr>
-        <td>B104</td>
-        <td>Gweru</td>
-        <td>Harare</td>
-        <td>02:00 PM</td>
-        <td>$12</td>
-        <td><a href="https://www.google.com/maps/dir/Gweru/Harare" target="_blank">View Route</a></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
- </div>
+<div class="content">
+  <!-- Bus Schedule Table -->
+  <div class="form-group" id="schedule">
+    <section>
+      <h2>Available Buses</h2>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Bus No.</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Departure</th>
+            <th>Price</th>
+            <th>Route / Map</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>B101</td>
+            <td>Harare</td>
+            <td>Bulawayo</td>
+            <td>06:00 AM</td>
+            <td>$15</td>
+            <td><a href="https://www.google.com/maps/dir/Harare/Bulawayo" target="_blank">View Route</a></td>
+          </tr>
+          <tr>
+            <td>B102</td>
+            <td>Harare</td>
+            <td>Mutare</td>
+            <td>08:30 AM</td>
+            <td>$10</td>
+            <td><a href="https://www.google.com/maps/dir/Harare/Mutare" target="_blank">View Route</a></td>
+          </tr>
+          <tr>
+            <td>B103</td>
+            <td>Bulawayo</td>
+            <td>Victoria Falls</td>
+            <td>10:00 AM</td>
+            <td>$20</td>
+            <td><a href="https://www.google.com/maps/dir/Bulawayo/Victoria+Falls" target="_blank">View Route</a></td>
+          </tr>
+          <tr>
+            <td>B104</td>
+            <td>Gweru</td>
+            <td>Harare</td>
+            <td>02:00 PM</td>
+            <td>$12</td>
+            <td><a href="https://www.google.com/maps/dir/Gweru/Harare" target="_blank">View Route</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Sidebar Article -->
+  <article>
+    <h2>Wonder If You Can Trust Us</h2>
+    <p>
+      At <strong>TikNash Logistics</strong>, trust isn’t just a word—it’s the foundation of everything we do. 
+      For years, we’ve built a reputation for being dependable, delivering on our promises, and putting our 
+      customers first.
+    </p>
+    <p>
+      Travelling with us is more than just getting from point A to point B—it’s about comfort, peace of mind, 
+      and knowing you’re in safe hands.
+    </p>
+    <p>
+      We understand what travelers expect: punctuality, safety, and a stress-free experience. That’s why 
+      we go the extra mile to ensure your trip is not only efficient but also pleasant.
+    </p>
+    <p>
+      Choose TikNash Logistics—where reliability meets comfort, and every traveler is treated like family.
+    </p>
+  </article>
+</div>
 
 <hr>
 
 <!-- Booking Form -->
- <div class="form-group">
+<div class="form-group">
 <section id="booking">
   <h2>Book a Ticket</h2>
   <form>
@@ -158,31 +209,6 @@
 </section>
 </div>
 <hr>
-    <small>
-      <article>
-  <h2>Wonder If You Can Trust Us</h2>
-  <p>
-    At <strong>TikNash Logistics</strong>, trust isn’t just a word—it’s the foundation of everything we do. 
-    For years, we’ve built a reputation for being dependable, delivering on our promises, and putting our 
-    customers first. Our history with travelers and partners speaks for itself: consistent service, 
-    reliable schedules, and a commitment to excellence.
-  </p>
-  <p>
-    Travelling with us is more than just getting from point A to point B—it’s about comfort, peace of mind, 
-    and knowing you’re in safe hands. Our vehicles are maintained to the highest standards, and our team 
-    is dedicated to making every journey smooth and enjoyable.
-  </p>
-  <p>
-    We understand what travelers expect: punctuality, safety, and a stress-free experience. That’s why 
-    we go the extra mile to ensure your trip is not only efficient but also pleasant. Whether it’s a 
-    short ride or a long-distance journey, TikNash Logistics is here to make it memorable.
-  </p>
-  <p>
-    Choose TikNash Logistics—where reliability meets comfort, and every traveler is treated like family.
-  </p>
-   </article>
-    </small>
-
 
 <footer>
   <p>&copy; 2026 TikNash Logistics Safe TRAVELS With Us.</p>
@@ -190,4 +216,3 @@
 
 </body>
 </html>
-
